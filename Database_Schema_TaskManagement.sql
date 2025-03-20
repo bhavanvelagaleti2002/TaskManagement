@@ -1,7 +1,5 @@
 CREATE DATABASE TaskManagementDB;
 USE TaskManagementDB;
-
--- User Table
 CREATE TABLE Users (
     Id INT PRIMARY KEY AUTO_INCREMENT,
     Username VARCHAR(100) NOT NULL UNIQUE,
@@ -11,8 +9,6 @@ CREATE TABLE Users (
     CreatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     UpdatedAt DATETIME NULL ON UPDATE CURRENT_TIMESTAMP
 );
-
--- TaskItem Table
 CREATE TABLE TaskItems (
     Id INT PRIMARY KEY AUTO_INCREMENT,
     Title VARCHAR(200) NOT NULL,
@@ -25,6 +21,4 @@ CREATE TABLE TaskItems (
     CreatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     UpdatedAt DATETIME NULL ON UPDATE CURRENT_TIMESTAMP
 );
-
--- Foreign Key Constraint (Optional: If Users are assigned to Tasks)
 ALTER TABLE TaskItems ADD CONSTRAINT FK_AssignedTo FOREIGN KEY (AssignedTo) REFERENCES Users(Username);
